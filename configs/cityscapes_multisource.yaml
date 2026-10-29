@@ -1,0 +1,30 @@
+dataset: cityscapes
+data_root: /path/to/cityscapes
+nclass: 19
+crop_size: 798
+epochs: 15
+max_iters: 40000
+batch_size: 1
+lr: 0.000005
+lr_multi: 40.0
+criterion:
+  name: CELoss
+  kwargs:
+    ignore_index: 255
+backbone: dinov2_base
+lock_backbone: false
+amp: true
+reliability_threshold: 0.85
+uncertainty_alpha: 0.5
+uncertainty_penalty: 1.0
+uncertainty_gamma: 1.0
+lambda_u: 1.0
+lambda_ac: 0.5
+activation_checkpoint: true
+log_interval: 20
+
+amp_dtype: bfloat16
+
+checkpoint_interval: 500
+
+pretrained_path: pretrained/dinov2_base.pth
